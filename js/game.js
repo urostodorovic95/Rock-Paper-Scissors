@@ -36,14 +36,27 @@ function checkWinner(computerChoice, userChoice) {
 }
 
 function playRound(computerChoice=getComputerChoice(), userChoice=playerSelection()) {
-    // debug:
     console.log(`Computer: ${computerChoice}\nUser: ${userChoice}`)
-    let msgWinner = checkWinner(computerChoice, userChoice);
-    console.log(msgWinner)
-    if (msgWinner === "It's a tie.") {
-        playRound()
+    return checkWinner(computerChoice, userChoice);
     }
+
+
+function game() {
+    let userScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        let roundResult = playRound();
+        console.log(roundResult)
+        if (roundResult === "You win.") {
+            userScore += 1;
+        }
+        if (roundResult === "You lose.") {
+            computerScore += 1;
+        }
+        console.log(`Current score: User: ${userScore}, Computer: ${computerScore}`)
+    }
+    console.log(`Final score: User: ${userScore}, Computer: ${computerScore}`)
 }
 
-
-playRound()
+game()
