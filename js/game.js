@@ -10,29 +10,38 @@ let playerSelection = function() {
     return prompt("Choose your weapon(rock, paper, scissors: ").toLowerCase().trim()
 };
 
-function playRound(computerChoice=getComputerChoice(), userChoice=playerSelection()) {
-    console.log(`Computer: ${computerChoice}\nUser: ${userChoice}`)
+
+function checkWinner(computerChoice, userChoice) {
     if (computerChoice === userChoice) {
-        console.log("It's a tie!")
-        playRound()
+        return "It's a tie."
     } else if (userChoice === "rock") {
         if (computerChoice === "scissors") {
-            console.log("You win!")
+            return "You win."
         } else {
-            console.log("You lose.")
+            return "You lose."
         }
     } else if (userChoice === "paper") {
         if (computerChoice === "rock") {
-            console.log("You win.")
+            return "You win."
         } else {
-            console.log("You lose.")
+            return "You lose."
         }
     } else if (userChoice === "scissors") {
         if (computerChoice === "paper") {
-            console.log("You win.")
+            return "You win."
         } else {
-            console.log("You lose.")
+            return "You lose."
         }
+    }
+}
+
+function playRound(computerChoice=getComputerChoice(), userChoice=playerSelection()) {
+    // debug:
+    console.log(`Computer: ${computerChoice}\nUser: ${userChoice}`)
+    let msgWinner = checkWinner(computerChoice, userChoice);
+    console.log(msgWinner)
+    if (msgWinner === "It's a tie.") {
+        playRound()
     }
 }
 
