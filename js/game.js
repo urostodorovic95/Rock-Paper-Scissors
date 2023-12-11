@@ -1,3 +1,6 @@
+let userScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
   let choices = ["rock", "paper", "scissors"];
   return choices[Math.floor(Math.random() * choices.length)];
@@ -43,6 +46,8 @@ function playRound() {
   let result = checkWinner(computerChoice, userChoice);
   console.log(result);
   displayResult(userChoice, computerChoice, result);
+  updateScore(result);
+  displayScore(userScore, computerScore, result);
   return checkWinner(computerChoice, userChoice);
 }
 
@@ -58,33 +63,40 @@ function displayResult(userChoice, computerChoice, roundResult) {
   let displayResult = document.createElement("div");
   displayResult.textContent = roundResult;
 
-  resultsContainer.appendChild(displayUserChoice);
-  resultsContainer.appendChild(displayComputerChoice);
-  resultsContainer.appendChild(displayResult);
+  resultsContainer.append(
+    displayUserChoice,
+    displayComputerChoice,
+    displayResult
+  );
+}
+
+function updateScore(roundResult) {
+  if (roundResult === "You win.") {
+    userScore += 1;
+  }
+  if (roundResult === "You lose.") {
+    computerScore += 1;
+  }
+  console.log(userScore, computerScore)
+}
+
+function displayScore(userScore, computerScore) {
+  let scoreContainer = document.querySelector(".score");
+  removeChildren(scoreContainer);
+  document.body.appendChild(scoreContainer);
+  scoreContainer.className = "score";
+  
+
+  let displayUserScore = document.createElement("div");
+  displayUserScore.textContent = `Your score: ${userScore}`;
+
+  let displayComputerScore = document.createElement("div");
+  displayComputerScore.textContent = `Computer score: ${computerScore}`;
+
+  scoreContainer.append(displayUserScore, displayComputerScore);
+  console.log(scoreContainer)
 }
 
 function removeChildren(targetNode) {
   Array.from(targetNode.childNodes).forEach((node) => node.remove());
 }
-
-function game() {
-  let userScore = 0;
-  let computerScore = 0;
-
-  for (let i = 0; i < 5; i++) {
-    let roundResult = playRound();
-    console.log(roundResult);
-    if (roundResult === "You win.") {
-      userScore += 1;
-    }
-    if (roundResult === "You lose.") {
-      computerScore += 1;
-    }
-    console.log(
-      `Current score: User: ${userScore}, Computer: ${computerScore}`
-    );
-  }
-  console.log(`Final score: User: ${userScore}, Computer: ${computerScore}`);
-}
-
-// game();
