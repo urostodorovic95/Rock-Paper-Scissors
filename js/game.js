@@ -55,8 +55,12 @@ function displayResult(userChoice, computerChoice, roundResult) {
   let displayComputerChoice = document.createElement("div");
   displayComputerChoice.textContent = `Computer chose ${computerChoice}.`;
 
+  let displayResult = document.createElement("div");
+  displayResult.textContent = roundResult;
+
   resultsContainer.appendChild(displayUserChoice);
   resultsContainer.appendChild(displayComputerChoice);
+  resultsContainer.appendChild(displayResult);
 }
 
 function removeChildren(targetNode) {
