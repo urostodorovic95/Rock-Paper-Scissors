@@ -3,6 +3,7 @@ function getComputerChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
+// add event listener to buttons, onclick call playRound
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
@@ -38,7 +39,20 @@ function checkWinner(computerChoice, userChoice) {
 function playRound() {
   let computerChoice = getComputerChoice();
   console.log(`Computer: ${computerChoice}\nUser: ${userChoice}`);
+  let result = checkWinner(computerChoice, userChoice);
+  console.log(result);
+  displayResult(userChoice=userChoice, computerChoice=computerChoice, roundResult=result);
   return checkWinner(computerChoice, userChoice);
+}
+
+function displayResult(userChoice, computerChoice, roundResult) {
+  let resultsContainer = document.querySelector(".results");
+  resultsContainer.childNodes.forEach(node => node.remove());  // remove old choices 
+  
+  let DisplayUserChoice = document.createElement("div");
+  DisplayUserChoice.textContent = userChoice;
+
+  resultsContainer.appendChild(DisplayUserChoice);
 }
 
 function game() {
