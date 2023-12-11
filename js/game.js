@@ -20,24 +20,14 @@ buttons.forEach((button) => {
 function checkWinner(computerChoice, userChoice) {
   if (computerChoice === userChoice) {
     return "It's a tie.";
-  } else if (userChoice === "rock") {
-    if (computerChoice === "scissors") {
-      return "You win.";
-    } else {
-      return "You lose.";
-    }
-  } else if (userChoice === "paper") {
-    if (computerChoice === "rock") {
-      return "You win.";
-    } else {
-      return "You lose.";
-    }
-  } else if (userChoice === "scissors") {
-    if (computerChoice === "paper") {
-      return "You win.";
-    } else {
-      return "You lose.";
-    }
+  } else if (
+    (userChoice === "rock" && computerChoice === "scissors") ||
+    (userChoice === "paper" && computerChoice === "rock") ||
+    (userChoice === "scissors" && computerChoice === "paper")
+  ) {
+    return "You win.";
+  } else {
+    return "You lose.";
   }
 }
 
