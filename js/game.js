@@ -38,21 +38,29 @@ function checkWinner(computerChoice, userChoice) {
 
 function playRound() {
   let computerChoice = getComputerChoice();
+  let userChoice = arguments[0];
   console.log(`Computer: ${computerChoice}\nUser: ${userChoice}`);
   let result = checkWinner(computerChoice, userChoice);
   console.log(result);
-  displayResult(userChoice=userChoice, computerChoice=computerChoice, roundResult=result);
+  displayResult(userChoice, computerChoice, result);
   return checkWinner(computerChoice, userChoice);
 }
 
 function displayResult(userChoice, computerChoice, roundResult) {
   let resultsContainer = document.querySelector(".results");
-  resultsContainer.childNodes.forEach(node => node.remove());  // remove old choices 
-  
-  let DisplayUserChoice = document.createElement("div");
-  DisplayUserChoice.textContent = userChoice;
+  removeChildren(resultsContainer);
+  let displayUserChoice = document.createElement("div");
+  displayUserChoice.textContent = `You chose ${userChoice}.`;
 
-  resultsContainer.appendChild(DisplayUserChoice);
+  let displayComputerChoice = document.createElement("div");
+  displayComputerChoice.textContent = `Computer chose ${computerChoice}.`;
+
+  resultsContainer.appendChild(displayUserChoice);
+  resultsContainer.appendChild(displayComputerChoice);
+}
+
+function removeChildren(targetNode) {
+  Array.from(targetNode.childNodes).forEach((node) => node.remove());
 }
 
 function game() {
@@ -75,4 +83,4 @@ function game() {
   console.log(`Final score: User: ${userScore}, Computer: ${computerScore}`);
 }
 
-game();
+// game();
