@@ -43,15 +43,13 @@ function playRound() {
   if (userScore < 4 && computerScore < 4) {
     let computerChoice = getComputerChoice();
     let userChoice = arguments[0];
-    console.log(`Computer: ${computerChoice}\nUser: ${userChoice}`);
     let result = checkWinner(computerChoice, userChoice);
-    console.log(result);
     displayResult(userChoice, computerChoice, result);
     updateScore(result);
     displayScore(userScore, computerScore, result);
     return checkWinner(computerChoice, userChoice);
   } else {
-    announceWinner()
+    announceWinner();
     userScore = 0;
     computerScore = 0;
   }
@@ -83,7 +81,6 @@ function updateScore(roundResult) {
   if (roundResult === "You lose.") {
     computerScore += 1;
   }
-  console.log(userScore, computerScore);
 }
 
 function displayScore(userScore, computerScore) {
@@ -99,16 +96,15 @@ function displayScore(userScore, computerScore) {
   displayComputerScore.textContent = `Computer score: ${computerScore}`;
 
   scoreContainer.append(displayUserScore, displayComputerScore);
-  console.log(scoreContainer);
 }
 
 function announceWinner() {
   if (userScore > computerScore) {
-    alert("You win! refresh the page to go again.")
+    alert("You win! refresh the page to go again.");
   } else if (userScore === computerScore) {
-    alert("Oh my, 'tis a tie!")
+    alert("Oh my, 'tis a tie!");
   } else {
-    alert("You lose! Refresh the page to try again.")
+    alert("You lose! Refresh the page to try again.");
   }
 }
 
