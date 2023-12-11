@@ -52,11 +52,34 @@ body {
     color: #22092C;
     align-items: center;
     margin: 0 30%;
-    padding-left: 20px;
-    padding-right: 20px;;
+    padding: 30px 10px;
     flex-wrap: wrap;
 }
 
 .backgroundShow {
     background-color: #F05941;
 }
+
+
+button:hover {
+    background-color: #750E21;
+    border-radius: 50%;
+    animation: shakemebaybe 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    perspective: 1000px;
+  }
+  
+  @keyframes shakemebaybe {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
