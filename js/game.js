@@ -11,12 +11,6 @@ buttons.forEach((button) => {
   });
 });
 
-// let playerSelection = function () {
-//   return prompt("Choose your weapon(rock, paper, scissors: ")
-//     .toLowerCase()
-//     .trim();
-// };
-
 function checkWinner(computerChoice, userChoice) {
   if (computerChoice === userChoice) {
     return "It's a tie.";
