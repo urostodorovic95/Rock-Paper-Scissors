@@ -1,0 +1,49 @@
+body {
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    a
+}
+
+.container-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+    margin-top: 5%;
+}
+
+.user-choice button {
+    border: none;
+    background-color: #872341;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px;
+}
+
+.user-choice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid black;
+    width: 20%;
+    background-color: #22092C;
+}
+
+.results,
+.score {
+    border: 2px solid black;
+    padding: 2px;
+    margin-top: 10px !important;
+}
+
+.score {
+    display: flex;
+    justify-content: space-between;
+    background-color: #F05941;
+    color: #22092C;
+    align-items: center;
+    margin: 0 30%;
+    padding-left: 40px;
+    padding-right: 40px;;
+}
