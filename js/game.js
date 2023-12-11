@@ -95,11 +95,11 @@ function displayScore(userScore, computerScore) {
 
 function announceWinner() {
   if (userScore > computerScore) {
-    alert("You win! refresh the page to go again.");
+    alert("You win!");
   } else if (userScore === computerScore) {
     alert("Oh my, 'tis a tie!");
   } else {
-    alert("You lose! Refresh the page to try again.");
+    alert("You lose!");
   }
 }
 
