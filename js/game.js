@@ -3,11 +3,19 @@ function getComputerChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
-let playerSelection = function () {
-  return prompt("Choose your weapon(rock, paper, scissors: ")
-    .toLowerCase()
-    .trim();
-};
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    let buttonClicked = e.target.id;
+    playRound((userChoice = buttonClicked));
+  });
+});
+
+// let playerSelection = function () {
+//   return prompt("Choose your weapon(rock, paper, scissors: ")
+//     .toLowerCase()
+//     .trim();
+// };
 
 function checkWinner(computerChoice, userChoice) {
   if (computerChoice === userChoice) {
@@ -33,10 +41,8 @@ function checkWinner(computerChoice, userChoice) {
   }
 }
 
-function playRound(
-  computerChoice = getComputerChoice(),
-  userChoice = playerSelection()
-) {
+function playRound() {
+  let computerChoice = getComputerChoice();
   console.log(`Computer: ${computerChoice}\nUser: ${userChoice}`);
   return checkWinner(computerChoice, userChoice);
 }
