@@ -40,15 +40,21 @@ function checkWinner(computerChoice, userChoice) {
 }
 
 function playRound() {
-  let computerChoice = getComputerChoice();
-  let userChoice = arguments[0];
-  console.log(`Computer: ${computerChoice}\nUser: ${userChoice}`);
-  let result = checkWinner(computerChoice, userChoice);
-  console.log(result);
-  displayResult(userChoice, computerChoice, result);
-  updateScore(result);
-  displayScore(userScore, computerScore, result);
-  return checkWinner(computerChoice, userChoice);
+  if (userScore < 4 && computerScore < 4) {
+    let computerChoice = getComputerChoice();
+    let userChoice = arguments[0];
+    console.log(`Computer: ${computerChoice}\nUser: ${userChoice}`);
+    let result = checkWinner(computerChoice, userChoice);
+    console.log(result);
+    displayResult(userChoice, computerChoice, result);
+    updateScore(result);
+    displayScore(userScore, computerScore, result);
+    return checkWinner(computerChoice, userChoice);
+  } else {
+    announceWinner()
+    userScore = 0;
+    computerScore = 0;
+  }
 }
 
 function displayResult(userChoice, computerChoice, roundResult) {
@@ -77,7 +83,7 @@ function updateScore(roundResult) {
   if (roundResult === "You lose.") {
     computerScore += 1;
   }
-  console.log(userScore, computerScore)
+  console.log(userScore, computerScore);
 }
 
 function displayScore(userScore, computerScore) {
@@ -85,7 +91,6 @@ function displayScore(userScore, computerScore) {
   removeChildren(scoreContainer);
   document.body.appendChild(scoreContainer);
   scoreContainer.className = "score";
-  
 
   let displayUserScore = document.createElement("div");
   displayUserScore.textContent = `Your score: ${userScore}`;
@@ -94,7 +99,17 @@ function displayScore(userScore, computerScore) {
   displayComputerScore.textContent = `Computer score: ${computerScore}`;
 
   scoreContainer.append(displayUserScore, displayComputerScore);
-  console.log(scoreContainer)
+  console.log(scoreContainer);
+}
+
+function announceWinner() {
+  if (userScore > computerScore) {
+    alert("You win! refresh the page to go again.")
+  } else if (userScore === computerScore) {
+    alert("Oh my, 'tis a tie!")
+  } else {
+    alert("You lose! Refresh the page to try again.")
+  }
 }
 
 function removeChildren(targetNode) {
