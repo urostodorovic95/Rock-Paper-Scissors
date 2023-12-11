@@ -12,6 +12,8 @@ buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
     let buttonClicked = e.target.id;
     playRound((userChoice = buttonClicked));
+    document.querySelector(".results").classList.add("bordersVisible");
+    document.querySelector(".score").classList.add("bordersVisible", "backgroundShow");
   });
 });
 

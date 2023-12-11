@@ -1,6 +1,7 @@
 body {
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    a
+    font-size: 2rem;
+    background-color: #FDF7E4;
 }
 
 .container-main {
@@ -14,36 +15,48 @@ body {
 
 .user-choice button {
     border: none;
-    background-color: #872341;
+    background-color: inherit;
     color: white;
-    font-weight: bold;
+    font-size: 40px;
     padding: 10px;
     margin: 10px;
+    cursor: pointer;
 }
 
 .user-choice {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     border: 2px solid black;
     width: 20%;
-    background-color: #22092C;
+}
+
+.results {
+    text-align: center;
 }
 
 .results,
 .score {
-    border: 2px solid black;
     padding: 2px;
     margin-top: 10px !important;
+}
+
+.bordersVisible {
+    border: 2px solid black;
 }
 
 .score {
     display: flex;
     justify-content: space-between;
-    background-color: #F05941;
     color: #22092C;
     align-items: center;
     margin: 0 30%;
-    padding-left: 40px;
-    padding-right: 40px;;
+    padding-left: 20px;
+    padding-right: 20px;;
+    flex-wrap: wrap;
+}
+
+.backgroundShow {
+    background-color: #F05941;
 }
