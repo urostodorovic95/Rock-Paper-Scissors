@@ -13,7 +13,9 @@ buttons.forEach((button) => {
     let buttonClicked = e.target.id;
     playRound((userChoice = buttonClicked));
     document.querySelector(".results").classList.add("bordersVisible");
-    document.querySelector(".score").classList.add("bordersVisible", "backgroundShow");
+    document
+      .querySelector(".score")
+      .classList.add("bordersVisible", "backgroundShow");
   });
 });
 
@@ -32,18 +34,19 @@ function checkWinner(computerChoice, userChoice) {
 }
 
 function playRound() {
-  if (userScore < 4 && computerScore < 4) {
+  if (userScore < 5 && computerScore < 5) {
     let computerChoice = getComputerChoice();
     let userChoice = arguments[0];
     let result = checkWinner(computerChoice, userChoice);
+
     displayResult(userChoice, computerChoice, result);
     updateScore(result);
     displayScore(userScore, computerScore, result);
-    return checkWinner(computerChoice, userChoice);
-  } else {
-    announceWinner();
-    userScore = 0;
-    computerScore = 0;
+    if (userScore === 5 || computerScore === 5) {
+      announceWinner();
+      userScore = 0;
+      computerScore = 0;
+    }
   }
 }
 
